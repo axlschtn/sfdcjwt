@@ -1,0 +1,1 @@
+web: uvicorn herokuapp.main:app
