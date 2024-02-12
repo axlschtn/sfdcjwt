@@ -1,1 +1,1 @@
-web: uvicorn herokuapp.main:app
+web: uvicorn herokuapp.main:app --host=0.0.0.0 --port=${PORT:-5000}

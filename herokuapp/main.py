@@ -1,6 +1,4 @@
-import os
 from fastapi import FastAPI, Depends, HTTPException
-from simple_salesforce import Salesforce
 
 app = FastAPI()
 
