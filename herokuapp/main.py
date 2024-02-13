@@ -1,19 +1,10 @@
-from fastapi import FastAPI, Depends, HTTPException
+from fastapi import FastAPI
+from herokuapp.routes import salesforces
 
 app = FastAPI()
 
-# os.environ.get()
-# os.getenv('KEY')
-def sf_connect():
-    try:
-        return 'ok'
-    except:
-        raise HTTPException(
-            status_code=404,
-            detail=str('OUPSSS')
-        )
-    
+app.include_router(salesforces.router)
 
 @app.get('/')
-async def get_index(sf_connect = Depends(sf_connect)) -> str:
-    return sf_connect
+async def get_index():
+    return 'ok'
