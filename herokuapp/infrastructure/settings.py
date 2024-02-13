@@ -10,3 +10,7 @@ class Settings:
     SF_PRIVATE_KEY: str = os.getenv('SF_PRIVATE_KEY')
     SF_TOKEN_SERVICE: str = os.getenv('SF_TOKEN_SERVICE')
     SF_GRANT_TYPE: str = os.getenv('SF_GRANT_TYPE')
+    SF_TOKEN_REVOKE: str = os.getenv('SF_TOKEN_REVOKE')
+    
+    
+

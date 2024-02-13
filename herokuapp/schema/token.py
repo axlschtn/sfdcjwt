@@ -24,10 +24,7 @@ class TokenResponse(BaseModel):
 class TokenError(BaseModel):
     error: str
     error_description: str
-    
-class ResponseTokenService(BaseModel):
-    data: TokenResponse
-
+    status_code: int
 
 class RequestJWTPayload(BaseModel):
     iss: str
