@@ -14,7 +14,7 @@ class SalesforceAuth():
         )
     
     def post_token(self):
-        return requests.post(
+        r = requests.post(
             f'{Settings.SF_LOGIN_URL}{Settings.SF_TOKEN_SERVICE}',
             data = {
                 'grant_type': Settings.SF_GRANT_TYPE,
@@ -25,3 +25,6 @@ class SalesforceAuth():
                 )
             }
         )
+        print(r.status_code)
+        print(r.json())
+        return r

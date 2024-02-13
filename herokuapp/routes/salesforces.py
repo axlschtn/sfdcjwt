@@ -15,12 +15,5 @@ async def get_token(
         Depends(SalesforceAuth)
     ]
 ) -> TokenResponse:
-    try:
-        print(auth.post_token().json())
-        return TokenResponse(**auth.post_token().json())
-    except:
-        raise HTTPException(
-            status_code=404,
-            detail=str('Something went wrong !')
-        )
+    return TokenResponse(**auth.post_token().json())
     
