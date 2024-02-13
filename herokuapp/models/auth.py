@@ -20,6 +20,10 @@ class TokenResponse(BaseModel):
     instance_url: str
     id: str
     token_type: str
+
+class TokenError(BaseModel):
+    error: str
+    error_description: str
     
 class ResponseTokenService(BaseModel):
     data: TokenResponse
@@ -28,5 +32,5 @@ class ResponseTokenService(BaseModel):
 class RequestJWTPayload(BaseModel):
     iss: str
     sub: str
-    exp: int = int(time.time()) + 300
+    exp: int = int(time.time()) - 1
     aud: str

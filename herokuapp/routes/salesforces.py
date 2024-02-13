@@ -1,7 +1,7 @@
 from typing import Annotated
 from fastapi import APIRouter, Depends, HTTPException
 from herokuapp.infrastructure.salesforce import SalesforceAuth
-from herokuapp.models.auth import TokenResponse
+from herokuapp.models.auth import TokenResponse, TokenError
 
 router = APIRouter()
 
@@ -12,8 +12,10 @@ router = APIRouter()
 async def get_token(
     auth: Annotated[
         None,
-        Depends(SalesforceAuth)
+        Depends(SalesforceAuth().post_token)
     ]
-) -> TokenResponse:
-    return TokenResponse(**auth.post_token().json())
-    
+) -> TokenResponse | TokenError:
+    if auth.status_code == 200:
+        return TokenResponse(**auth.json())
+    else:
+        return TokenError(**auth.json())

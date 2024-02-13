@@ -11,7 +11,7 @@ class SalesforceAuth():
             iss=Settings.SF_CONSUMER_KEY,
             sub=Settings.SF_USERNAME,
             aud=Settings.SF_LOGIN_URL
-        )
+        ).__dict__    
     
     def post_token(self):
         r = requests.post(
@@ -19,12 +19,12 @@ class SalesforceAuth():
             data = {
                 'grant_type': Settings.SF_GRANT_TYPE,
                 'assertion': jwt.encode(
-                    self.generate_token.__dict__,
+                    self.generate_token,
                     Settings.SF_PRIVATE_KEY,
                     algorithm="RS256"
                 )
             }
         )
-        print(r.status_code)
-        print(r.json())
         return r
+
+    
