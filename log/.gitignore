@@ -1,0 +1,5 @@
+# ENV FILE
+*.env
+
+# FOLDER
+herokuapp/*/__pycache__/
