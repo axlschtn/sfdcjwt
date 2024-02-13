@@ -16,6 +16,7 @@ async def get_token(
     ]
 ) -> TokenResponse:
     try:
+        print(auth.post_token().json())
         return TokenResponse(**auth.post_token().json())
     except:
         raise HTTPException(

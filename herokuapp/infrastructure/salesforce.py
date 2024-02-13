@@ -14,7 +14,6 @@ class SalesforceAuth():
         )
     
     def post_token(self):
-        print(Settings.SF_PRIVATE_KEY)
         return requests.post(
             f'{Settings.SF_LOGIN_URL}{Settings.SF_TOKEN_SERVICE}',
             data = {
